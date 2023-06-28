@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie App</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="title" placeholder="title">
+        Rating: <input type="number" id="rating">
+        <button id="submit">Submit</button>
+    </form>
+    <section id="movies">
+
+    </section>
+
+    <script src="https://unpkg.com/jquery"></script>
+    <script>
+        $("form button").on("click", function(evt) {
+            evt.preventDefault();
+            console.log("on click function");
+            $("#movies").append($("<div>"));
+            
+            $("#movies div:last-child")
+            .append($("<h2>", { text: $("#title").val()}))
+            .append($("<h3>", { text: $("#rating").val()}))
+            .append($("<button>", { text: "Remove"}))
+        })
+
+        $("#movies").on("click", $("button"), removeMovie);
+
+        function removeMovie(evt) {
+            $(evt.target).parent().remove();
+        }
+
+    </script>
+</body>
+</html>
