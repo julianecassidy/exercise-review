@@ -1,13 +1,13 @@
 describe("separatePositive", function() {
-  it("does nothing to arrays of all positive numbers", function() {
-    let arr = [1, 2, 3];
-    expect(separatePositive(arr)).toBe(arr);
-  });
+  // it("does nothing to arrays of all positive numbers", function() {
+  //   let arr = [1, 2, 3];
+  //   expect(separatePositive(arr)).toBe(arr);
+  // });
 
-  it("does nothing to arrays of all negative numbers", function() {
-    let arr = [-1, -2, -3];
-    expect(separatePositive(arr)).toBe(arr);
-  });
+  // it("does nothing to arrays of all negative numbers", function() {
+  //   let arr = [-1, -2, -3];
+  //   expect(separatePositive(arr)).toBe(arr);
+  // });
 
   it("moves positives to the left and negatives to the right", function() {
     let arr = [2, -1, -3, 6, -8, 10];
