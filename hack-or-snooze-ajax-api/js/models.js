@@ -27,6 +27,16 @@ class Story {
     url = new URL (url);
     return url.hostname;
   }
+
+  static async getStory(id) {
+    const resp = await axios({
+      url: `${BASE_URL}/stories/${id}`,
+      method: "GET",
+    });
+
+    const story = new Story(resp.data);
+    return story;
+  }
 }
 
 
@@ -223,15 +233,16 @@ class User {
    * and add it to the currentUser's favorites.
    */
 
-  async addFavorite(story) {
+  async addFavorite(storyId) {
     console.debug("addFavorite");
 
     const resp = await axios({
-      url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
+      url: `${BASE_URL}/users/${this.username}/favorites/${storyId}`,
       method: "POST",
       params: { "token": this.loginToken },
     });
 
+    const story = await Story.getStory(storyId);
     currentUser.favorites.unshift(story);
   }
 
@@ -239,15 +250,13 @@ class User {
  * and remove it from the currentUser's favorites.
  */
 
-  async removeFavorite(story) {
+  async removeFavorite(storyId) {
     console.debug("removeFavorite");
 
-    const resp = await axios.delete(
-      `${BASE_URL}users/${this.username}/favorites/${story.id}`,
-      {params: {"token": currentUser.loginToken}}
-      );
-      
-    const storyIdx = currentUser.favorites.indexOf(story);
-    currentUser.favorites.splice(storyIdx, 1);
+    const resp = await axios({
+      url: `${BASE_URL}/users/${this.username}/favorites/${storyId}`,
+      method: "DELETE",
+      params: { "token": this.loginToken }
+    });
   }
 }

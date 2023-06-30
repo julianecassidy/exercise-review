@@ -81,17 +81,25 @@ async function handleNewStoryFormSubmit() {
   putStoryOnPage(newStory);
 }
 
-async function handleAddFavoriteStory() {
-  return console.log("coming soon");
+async function handleAddFavoriteStory(evt) {
+  const $storyId = $(evt.target).closest("li").attr("id");
+  console.log("handleAddFavorite id", $storyId);
+  currentUser.addFavorite($storyId);
 
+  const $star = $(evt.target).closest(".bi")
+  $star.removeClass("bi-star");
+  $star.addClass("bi-star-fill");
 }
 
+async function handleRemoveFavoriteStory(evt) {
+  const $storyId = $(evt.target).closest("li").attr("id");
+  console.log("handleRemoveFavorite id", $storyId);
+  currentUser.removeFavorite($storyId);
 
-async function handleRemoveFavoriteStory() {
-  return console.log("coming soon");
+  const $star = $(evt.target).closest(".bi")
+  $star.removeClass("bi-star-fill");
+  $star.addClass("bi-star");
 }
-
-
 
 
 

@@ -54,5 +54,10 @@ function updateNavOnLogin() {
   $newStory.show();
 }
 
-// $allStoriesList.on("click", ".bi-star", handleAddFavoriteStory);
-// $allStoriesList.on("click", ".bi-star-fill", handleRemoveFavoriteStory);
+$allStoriesList.on("click", ".bi-star", function (evt) {
+  handleAddFavoriteStory(evt);
+});
+
+$allStoriesList.on("click", ".bi-star-fill", function(evt) {
+  handleRemoveFavoriteStory(evt)
+});
