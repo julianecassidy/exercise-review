@@ -56,11 +56,11 @@ function makeHtmlBoard() {
     for (var x = 0; x < WIDTH; x++) {
       // TODO: Create a table cell element and assign to a "cell" variable
       const cell = document.createElement("td");
-      
+
       // TODO: add an id, c-y-x, to the above table cell element
       // you'll use this later, so make sure you use c-y-x
       cell.setAttribute("id", `c-${y}-${x}`);
-      
+
       // TODO: append the table cell to the table row
       row.append(cell);
 
@@ -167,10 +167,10 @@ function checkForWin() {
       if (y > 0 && y < HEIGHT && x > 0 && x < WIDTH
         && board[y][x] !== currPlayer board[y][x] === null) {
         return false;
+      }
     }
+    return true;
   }
-  return true;
-}
 
   // using HEIGHT and WIDTH, generate "check list" of coordinates
   // for 4 cells (starting here) for each of the different
